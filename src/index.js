@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// Bootstrap Imports
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import $ from 'jquery';
+import Popper from 'popper.js';
+// Animate.css Imports
+import "animate.css/animate.css";
 
 ReactDOM.render(
   <React.StrictMode>

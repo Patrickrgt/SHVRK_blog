@@ -1,38 +1,175 @@
-.App {
+/* Montserrat */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+
+/* Montserrat Light */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+/* Oswald */
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
+
+/* Merriweather */
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap");
+
+html,
+body {
+  background-color: #5cabef;
+
+  overflow: hidden;
+}
+
+p {
+  background-color: rgb(255, 255, 255, 0);
+  color: rgb(42, 97, 143, 0.5);
+  font-family: "Merriweather", sans-serif;
+  font-size: 2vw;
+  text-shadow: 1px 1px rgba(92, 171, 239);
+  position: absolute;
+  width: 80%;
+  margin-left: 1vw;
+  /* Animation */
+}
+
+* {
+  background-color: #5cabef;
+}
+
+img {
+  background: rgb(255, 255, 255, 0);
+}
+
+.body-color {
+  background-color: #5cabef;
+}
+
+#blog-title-contain {
+  margin: auto;
+  width: 90%;
+}
+
+#blog-title {
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  margin: auto;
+  letter-spacing: 1.5em;
+  margin-right: -1.5em;
+  padding-top: 0.125em;
   text-align: center;
+  font-size: 4vw;
+  text-transform: uppercase;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#blog-tab-div {
+  text-align: center;
+  margin: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.blog-tab {
+  color: #ffffff;
+  border: none;
+  background: none;
+  font-family: "Oswald", sans-serif;
+  font-size: 2.5vw;
+  margin: 0.25em 1em;
+  padding: 0.25em 1.5em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.blog-tab:hover {
+  background-color: #ffffff;
+  color: #2a618f;
+  /* TRANSITION FADE */
+  transition: 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.blog-tab:focus {
+  outline-color: rgb(255, 255, 255, 0.2);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.blog-active {
+  background-color: #ffffff;
+  color: #2a618f;
+}
+
+.post-date {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.75vw;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  text-transform: uppercase;
+  position: absolute;
+  left: 1vh;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0);
+  text-shadow: 0px 5px rgba(255, 255, 255, 0.4);
+}
+
+.post-div {
+  width: 82.25%;
+  margin: auto;
+  background-color: #ffffff;
+  padding-bottom: 31vw;
+  border-radius: 0.5vw;
+  /* Animation */
+  animation: fadeInUp;
+  animation-duration: 1s;
+}
+
+.post-title {
+  font-family: "Montserrat", sans-serif;
+  background-color: rgb(255, 255, 255, 0);
+  color: rgb(255, 101, 132);
+  margin-left: 1vw;
+  font-size: 4vw;
+}
+
+.post-body {
+  background-color: #ffffff;
+}
+
+.post-pointer {
+  position: absolute;
+  right: 3vw;
+  top: 29vw;
+}
+
+.img-back {
+  position: absolute;
+  right: 3vw;
+  top: 29vw;
+}
+
+#img-div {
+  display: none;
+  padding-left: 0;
+}
+
+.img-pure {
+  position: absolute;
+  top: 36vw;
+  left: 56vw;
+
+  margin-top: -250px; /* Half the height */
+  margin-left: -250px; /* Half the width */
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.img-back {
+  position: absolute;
+}
+
+.pagination {
+  margin: 0;
+}
+
+.pagination-inner {
+  margin: auto;
+  background: rgb(255, 255, 255, 0);
+}
+
+.pagination-div {
+  display: inline-block;
+  margin: 1vw 1vw;
+  text-align: center;
+  background: rgb(255, 255, 255, 0);
 }
