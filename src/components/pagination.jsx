@@ -13,9 +13,9 @@ const Pagination = (props) => {
   return (
     <nav>
       <ul className="pagination">
-        <div className="pagination-inner animate__animated animate__fadeInUp">
-          {pages.map((page) => (
-            <div className="pagination-div">
+        <div className="pagination-inner">
+          {pages.map((page, index) => (
+            <div key={index} className="pagination-div">
               {page === currentPage ? (
                 <img src={fullcircle} alt="" />
               ) : (

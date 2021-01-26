@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import FashionCategoryJSX from "./components/fashionCategory.jsx"
+import BodyPost from './components/bodyPost'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
      <FashionCategoryJSX>
 
      </FashionCategoryJSX>
+     <BodyPost/>
    </React.Fragment>
   );
 }
