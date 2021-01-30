@@ -25,23 +25,15 @@ export default function PublishedAt(props) {
   let year = longDate.getFullYear();
 
   const formatDate = months[monthIndex] + " " + day + " " + year;
+  console.log(formatDate);
 
   return (
-    <Spring
-      from={{ opacity: 0, marginTop: -500 }}
-      to={{ opacity: 1, marginTop: 0 }}
-    >
-      {(props) => (
-        <div>
-          {rawDate != undefined ? (
-            <article style={props}>
-              <h3 className="post-date">{formatDate}</h3>{" "}
-            </article>
-          ) : (
-            <div></div>
-          )}
-        </div>
-      )}
-    </Spring>
+    <main className="post-div">
+      <h3 className="post-title">{post.title}</h3>
+      <span className="post-line"></span>
+      <article id="post-div">
+        <BlockContent id="block" blocks={post.body} />
+      </article>
+    </main>
   );
 }

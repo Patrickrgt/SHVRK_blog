@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import PublishedAt from "../components/bodyPost.js";
+import PublishedAt from "./publishedAt.js";
+import Tabs from "../components/tabs.js";
 import Pagination from "../components/pagination";
 import { paginate } from "../utils/paginate";
 import sanityClient from "../client.js";
@@ -7,10 +8,14 @@ import BlockContent from "@sanity/block-content-to-react";
 import pointer from "../img/pointer.png";
 import pointerback from "../img/pointerback.png";
 
+import { Spring, Transition, animated, config } from "react-spring/renderprops";
+
 class FashionCategoryJSX extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showDate: false,
+      showPost: false,
       tabs: ["fashion", "art", "music", "social", "gaming"],
 
       allData: [],
@@ -134,9 +139,14 @@ class FashionCategoryJSX extends Component {
       {
         currentCategory: tabs[category],
         imgUrl: "",
+        showDate: !this.state.showDate,
+        showPost: !this.state.showPost,
       },
       () => {
-        console.log(this.state.currentCategory);
+        this.setState({
+          showDate: true,
+          showPost: true,
+        });
       }
     );
 
@@ -165,35 +175,95 @@ class FashionCategoryJSX extends Component {
     return (
       <div className="body-color">
         <figure id="blog-title-contain">
-          <h1 id="blog-title" className="animate__animated animate__bounce">
-            shvrk bloG
-          </h1>
+          <h1 id="blog-title">shvrk bloG</h1>
         </figure>
 
-        <nav id="blog-tab-div">
-          {this.state.tabs.map((tab, index) => (
-            <button
-              key={index}
-              className="blog-tab"
-              onClick={() => this.callCategory(tab)}
-            >
-              {tab}
-            </button>
-          ))}
-        </nav>
+        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+          {(props) => (
+            <div style={props}>
+              <nav id="blog-tab-div">
+                {this.state.tabs.map((tab, index) => (
+                  <button
+                    key={index}
+                    className="blog-tab"
+                    onClick={() => this.callCategory(tab)}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </nav>
+            </div>
+          )}
+        </Spring>
 
         <div>
           {currentPost.map((post, index) => (
             <div key={index}>
-              <PublishedAt rawDate={post.publishedAt}></PublishedAt>
+              <Transition
+                native
+                items={this.state.showDate}
+                from={{
+                  opacity: 0,
+                  transform: "translate3d(400px,0,0)",
+                  marginTop: 10,
+                }}
+                enter={{
+                  opacity: 1,
+                  transform: "translate3d(0px,0,0)",
+                  marginTop: 10,
+                }}
+                leave={{
+                  opacity: 0,
+                  transform: "translate3d(400px,0,0)",
+                  marginTop: 10,
+                }}
+              >
+                {(show) =>
+                  show &&
+                  ((props) => (
+                    <animated.div style={props}>
+                      <PublishedAt rawDate={post.publishedAt}></PublishedAt>
+                    </animated.div>
+                  ))
+                }
+              </Transition>
+
               {/* <h3 className="post-date">{this.formatDate(post.publishedAt)}</h3> */}
-              <main className="post-div">
-                <h3 className="post-title">{post.title}</h3>
-                <span className="post-line"></span>
-                <article id="post-div">
-                  <BlockContent id="block" blocks={post.body} />
-                </article>
-              </main>
+
+              <Transition
+                config={config.default}
+                native
+                items={this.state.showPost}
+                from={{
+                  opacity: 1,
+                }}
+                enter={{
+                  opacity: 1,
+                  transform: "scale(1)",
+                  transform: "translate3d(0px,0,0)",
+                }}
+                leave={{
+                  opacity: 0,
+                  position: "absolute",
+                  top: "12.25vw",
+                  right: "9vw",
+                  transform: "translate3d(400px,0,0)",
+                }}
+              >
+                {(show) =>
+                  show &&
+                  ((props) => (
+                    <animated.div style={props} className="post-div">
+                      <h3 className="post-title">{post.title}</h3>
+                      <span className="post-line"></span>
+                      <article id="post-div">
+                        <BlockContent id="block" blocks={post.body} />
+                      </article>
+                    </animated.div>
+                  ))
+                }
+              </Transition>
+
               {post.mainImage != undefined ? (
                 <div>
                   <section>

@@ -1,19 +1,18 @@
 import React from "react";
 import "./App.css";
-import FashionCategoryJSX from "./components/fashionCategory.jsx"
-import BodyPost from './components/bodyPost'
+import FashionCategoryJSX from "./components/fashionCategory.jsx";
+import PublishedAt from "./components/publishedAt";
 
 function App() {
   return (
-   <React.Fragment>
-     {/* <button onClick={FashionCategory}>
+    <React.Fragment>
+      {/* <button onClick={FashionCategory}>
       test
      </button> */}
-     <FashionCategoryJSX>
+      <FashionCategoryJSX></FashionCategoryJSX>
 
-     </FashionCategoryJSX>
-     <BodyPost/>
-   </React.Fragment>
+      <PublishedAt />
+    </React.Fragment>
   );
 }
 
